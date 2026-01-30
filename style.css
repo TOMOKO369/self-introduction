@@ -8,7 +8,6 @@ body {
     background-color: #ffffff;
     font-family: 'Zen Old Mincho', 'Shippori Mincho', serif;
     color: #444;
-    /* Dark gray for softer text */
     line-height: 2.0;
     letter-spacing: 0.05em;
     -webkit-font-smoothing: antialiased;
@@ -17,18 +16,16 @@ body {
 .container {
     width: 100%;
     max-width: 600px;
-    /* Limit width for optimal reading on PC, full width on mobile */
     margin: 0 auto;
     background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    /* Subtle shadow */
+    /* Removed shadow for a cleaner look on mobile */
+    /* box-shadow: 0 0 20px rgba(0,0,0,0.05); */
 }
 
 /* --- Header Section (Blackboard + Icon) --- */
 .hero-image {
     width: 100%;
-    /* Reduced height to crop out the text in the original image. 
-       Only showing the blackboard and icon now. */
+    /* PC/Tablet: Show top 45% of the image */
     padding-top: 45%;
     background-image: url('background.png');
     background-position: top center;
@@ -39,60 +36,54 @@ body {
 
 /* --- Main Content (Text) --- */
 .content-body {
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 2rem 1rem 2rem;
     text-align: center;
 }
 
 .section-title {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.3em;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.2em;
     color: #444;
 }
 
 .main-name {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
+    /* Slightly larger */
     font-weight: 700;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
     color: #5d5d5d;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
 }
 
 .sub-name {
     font-size: 0.9rem;
     color: #999;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+    /* More space */
     font-family: 'Zen Old Mincho', serif;
     letter-spacing: 0.1em;
 }
 
 .description {
     text-align: left;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     margin-bottom: 3rem;
     color: #555;
-    line-height: 2.2;
+    line-height: 2.4;
+    /* More breathing room */
 }
 
 .description p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    /* Separate paragraphs clearly */
     text-align: justify;
-    /* Ensure nice block layout */
-}
-
-.separator {
-    border: 0;
-    height: 1px;
-    background: #ccc;
-    margin: 2rem 0;
-    width: 100%;
 }
 
 /* --- Footer Section (Icon Links) --- */
 .footer-image {
     width: 100%;
     position: relative;
-    /* Reduced height to only show the bottom icons */
     padding-top: 25%;
     background-image: url('background.png');
     background-position: bottom center;
@@ -101,39 +92,32 @@ body {
     margin-top: 2rem;
 }
 
-.footer-links {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* --- Navigation Links (Invisible Click Areas) --- */
+/* --- Navigation Links --- */
 .nav-link {
     position: absolute;
-    bottom: 20%;
-    /* Vertically centered in the footer area roughly */
-    height: 60%;
-    /* Clickable area height */
-    width: 20%;
-    /* Clickable area width */
+    bottom: 0;
+    height: 100%;
+    /* Make the whole footer area clickable roughly */
+    width: 30%;
+    /* Wider click areas */
     cursor: pointer;
-    /* border: 1px solid red; /* Uncomment to debug link positions */
-    display: block;
+    z-index: 10;
+    /* background: rgba(0,0,0,0.1); /* Debug */
 }
 
 .link-mail {
-    left: 10%;
+    left: 2%;
+    width: 25%;
 }
 
 .link-youtube {
-    left: 40%;
-    width: 20%;
+    left: 37.5%;
+    width: 25%;
 }
 
 .link-mic {
-    right: 10%;
+    right: 2%;
+    width: 25%;
 }
 
 .sr-only {
@@ -147,17 +131,62 @@ body {
     border: 0;
 }
 
-/* --- Responsive Adjustments --- */
+/* --- Mobile Optimization --- */
 @media (max-width: 480px) {
+    .hero-image {
+        /* On mobile, slightly increase height to ensure character isn't cut off too tight */
+        padding-top: 50%;
+    }
+
     .content-body {
-        padding: 0 1.5rem 1.5rem 1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .section-title {
+        font-size: 0.85rem;
+        margin-top: -1rem;
+        /* Pull text up a bit */
     }
 
     .main-name {
         font-size: 1.8rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .sub-name {
+        font-size: 0.8rem;
+        margin-bottom: 2.5rem;
     }
 
     .description {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        line-height: 2.0;
+        margin-bottom: 2rem;
+    }
+
+    .description p {
+        margin-bottom: 1rem;
+    }
+
+    .footer-image {
+        /* On mobile, icons need to be big enough */
+        padding-top: 30%;
+        margin-top: 1rem;
+    }
+
+    /* Adjust click areas for touch */
+    .link-mail {
+        left: 0%;
+        width: 33%;
+    }
+
+    .link-youtube {
+        left: 33%;
+        width: 34%;
+    }
+
+    .link-mic {
+        left: 67%;
+        width: 33%;
     }
 }
